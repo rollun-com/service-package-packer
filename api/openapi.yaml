@@ -1,0 +1,188 @@
+openapi: 3.0.1
+info:
+  description: 3D packer based on https://github.com/betterwaysystems/packer
+  title: 3D Packer
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/rratsun/Packer/1.0.0
+- url: http://virtserver.swaggerhub.com/rratsun/Packer/1.0.0
+- url: http://localhost:3000
+- url: http://localhost:80
+tags:
+- name: packer
+paths:
+  /api/v1/pack:
+    post:
+      operationId: pack
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Body'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+          description: Bool response
+        "400":
+          content: {}
+          description: Invalid input
+      summary: Pack collection of items into collection of containers
+      tags:
+      - packer
+      x-codegen-request-body-name: body
+      x-eov-operation-handler: controllers/PackerController
+components:
+  schemas:
+    Result:
+      example:
+        cost: 0.8008282
+        containers:
+        - name: name
+          length: length
+          spaceUtilization: 1.4658129
+        - name: name
+          length: length
+          spaceUtilization: 1.4658129
+        items:
+        - layoutScale: layoutScale
+          name: name
+          position: position
+        - layoutScale: layoutScale
+          name: name
+          position: position
+        spaceUtilization: 6.0274563
+      properties:
+        cost:
+          format: float
+          type: number
+        spaceUtilization:
+          format: float
+          type: number
+        containers:
+          items:
+            $ref: '#/components/schemas/ResponseContainer'
+          type: array
+        items:
+          items:
+            $ref: '#/components/schemas/ResponseItem'
+          type: array
+      type: object
+    Item:
+      example:
+        quantity: 3
+        name: name
+        width: 2.302136
+        length: 9.301444
+        height: 7.0614014
+      properties:
+        name:
+          type: string
+        width:
+          format: float
+          type: number
+        height:
+          format: float
+          type: number
+        length:
+          format: float
+          type: number
+        quantity:
+          format: int64
+          type: integer
+      type: object
+    ResponseItem:
+      example:
+        layoutScale: layoutScale
+        name: name
+        position: position
+      properties:
+        name:
+          type: string
+        layoutScale:
+          type: string
+        position:
+          type: string
+      type: object
+    Container:
+      example:
+        thickness: 5.637377
+        price: 0.8008282
+        name: name
+        width: 6.0274563
+        length: 5.962134
+        height: 1.4658129
+      properties:
+        name:
+          type: string
+        price:
+          format: float
+          type: number
+        width:
+          format: float
+          type: number
+        height:
+          format: float
+          type: number
+        length:
+          format: float
+          type: number
+        thickness:
+          format: float
+          type: number
+      type: object
+    ResponseContainer:
+      example:
+        name: name
+        length: length
+        spaceUtilization: 1.4658129
+      properties:
+        name:
+          type: string
+        length:
+          type: string
+        spaceUtilization:
+          format: float
+          type: number
+      type: object
+    Body:
+      example:
+        container:
+        - thickness: 5.637377
+          price: 0.8008282
+          name: name
+          width: 6.0274563
+          length: 5.962134
+          height: 1.4658129
+        - thickness: 5.637377
+          price: 0.8008282
+          name: name
+          width: 6.0274563
+          length: 5.962134
+          height: 1.4658129
+        items:
+        - quantity: 3
+          name: name
+          width: 2.302136
+          length: 9.301444
+          height: 7.0614014
+        - quantity: 3
+          name: name
+          width: 2.302136
+          length: 9.301444
+          height: 7.0614014
+      properties:
+        container:
+          items:
+            $ref: '#/components/schemas/Container'
+          type: array
+        items:
+          items:
+            $ref: '#/components/schemas/Item'
+          type: array
+      required:
+      - items
+      type: object
