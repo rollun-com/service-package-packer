@@ -7,6 +7,7 @@ servers:
 - url: https://virtserver.swaggerhub.com/rratsun/Packer/1.0.0
 - url: http://virtserver.swaggerhub.com/rratsun/Packer/1.0.0
 - url: http://localhost:3000
+- url: http://localhost:8080
 - url: http://localhost:80
 tags:
 - name: packer
@@ -26,7 +27,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Result'
-          description: Bool response
+          description: Packing result
         "400":
           content: {}
           description: Invalid input
