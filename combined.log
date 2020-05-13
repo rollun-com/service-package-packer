@@ -40,3 +40,4 @@
 {"message":"Express server running","level":"info","service":"user-service","timestamp":"2020-05-13T09:25:35.417Z"}
 {"message":"Express server running","level":"info","service":"user-service","timestamp":"2020-05-13T09:31:29.338Z"}
 {"message":"Express server running","level":"info","service":"user-service","timestamp":"2020-05-13T09:33:43.716Z"}
+{"message":"Express server running","level":"info","service":"user-service","timestamp":"2020-05-13T10:18:18.282Z"}

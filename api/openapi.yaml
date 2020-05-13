@@ -27,7 +27,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Result'
-          description: Packing result
+          description: Bool response
         "400":
           content: {}
           description: Invalid input
@@ -132,7 +132,6 @@ components:
           format: float
           type: number
         thickness:
-          format: float
           type: number
       type: object
     ResponseContainer:
